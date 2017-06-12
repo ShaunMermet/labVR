@@ -8,6 +8,7 @@
   </head>
   <body>
     <a-scene>
+	    <a-entity camera="userHeight: 1.6" universal-controls="fly: true;movementEasingY: 15;"s></a-entity>
 		<a-assets>
 	    	<img id="groundTexture" src="../img/floor.jpg">
 	    	<img id="skyTexture" src="../img/sky3b.jpg">
