@@ -28,8 +28,8 @@ class DashboardController extends Controller {
      * @return Response
      */
     public function index() {
-        //error_log(print_r('123456',true));
-        //error_log(print_r(bcrypt('123456'),true));
+        //error_log(print_r('',true));
+        //error_log(print_r(bcrypt(''),true));
 
         $vars = [];
 

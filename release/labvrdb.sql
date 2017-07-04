@@ -496,7 +496,7 @@ CREATE TABLE `isvr_users` (
 
 INSERT INTO `isvr_users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'AdminShISVR', 'shaun.mermet@enroutelab.com', '$2y$10$n88SZL6Fo2AZINTXRvYTmuX04slowPcyKSmmukG2BXZh7GhpzSuaa', 'I6NcsF8jdSDSdBmvuH8foX0mVZCQRjAE146MZhQkGFQal0Xt6TdvU5wj4Po5', '2017-07-02 16:39:41', '2017-07-03 21:28:39'),
-(2, 'AdminKai', 'kai.yan@asdadasdgrtyr3342.com', '$2y$10$8/YkGFeXQJ2uTN2YwP5s.OzJzwvAadWd9S8tqWZXHXA4prYwahgd6', 'iRsn6ty6ZcGQtfXRgIdIYolnBDk66grLXbmJB0Mq3bFNnV1fQCKwhnqBw1zJ', '2017-07-02 16:39:41', '2017-07-02 18:46:03');
+(2, 'Labvr', 'dev@labromance.com', '$2y$10$X2lBWfcQ1TIo2rh2ANLnUeRR/JZF4W4CQWBnj5QWKRLT2Hbx3MN1m', 'iRsn6ty6ZcGQtfXRgIdIYolnBDk66grLXbmJB0Mq3bFNnV1fQCKwhnqBw1zJ', '2017-07-02 16:39:41', '2017-07-02 18:46:03');
 
 -- --------------------------------------------------------
 
