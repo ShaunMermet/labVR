@@ -57,26 +57,6 @@ CREATE TABLE `isvr_content` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `isvr_content`
---
-
-INSERT INTO `isvr_content` (`id`, `space_id`, `key`, `weight`, `title`, `uri`, `created_at`, `updated_at`) VALUES
-(28, 13, 'PLYModel', -1, 'Soybean august', '', '2017-07-03 21:07:43', '2017-07-03 21:07:43'),
-(27, 10, 'SkyBox', -1, 'Skybox7', '', '2017-07-03 19:28:15', '2017-07-03 19:28:15'),
-(24, 12, 'SkyBox', -1, 'Skybox2', '', '2017-07-03 19:26:14', '2017-07-03 19:27:21'),
-(21, 11, 'PLYModel', -1, 'Soybean June', '', '2017-07-03 17:57:25', '2017-07-03 17:57:25'),
-(25, 11, 'SkyBox', -1, 'Skybox1', '', '2017-07-03 19:26:44', '2017-07-03 19:26:44'),
-(22, 12, 'PLYModel', -1, 'Soybean July', '', '2017-07-03 18:37:08', '2017-07-03 18:37:08'),
-(26, 10, 'OBJModel', -1, 'Hokusou Hospital ground OBJ', '', '2017-07-03 19:28:00', '2017-07-03 19:28:00'),
-(29, 13, 'SkyBox', -1, 'Skybox3', '', '2017-07-03 21:07:56', '2017-07-03 21:07:56'),
-(30, 14, 'SkyBox', -1, 'Skybox4', '', '2017-07-03 21:14:46', '2017-07-03 21:14:46'),
-(31, 14, 'PLYModel', -1, 'Soybean September', '', '2017-07-03 21:15:16', '2017-07-03 21:15:16'),
-(32, 15, 'SkyBox', -1, 'Skybox5', '', '2017-07-03 21:20:49', '2017-07-03 21:20:49'),
-(33, 15, 'PLYModel', -1, 'Soybean October', '', '2017-07-03 21:21:09', '2017-07-03 21:21:09'),
-(34, 16, 'SkyBox', -1, 'Skybox6', '', '2017-07-03 21:24:26', '2017-07-03 21:24:26'),
-(35, 16, 'PLYModel', -1, 'Soybean December', '', '2017-07-03 21:24:45', '2017-07-03 21:24:45');
-
 -- --------------------------------------------------------
 
 --
@@ -334,19 +314,6 @@ CREATE TABLE `isvr_spaces` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `isvr_spaces`
---
-
-INSERT INTO `isvr_spaces` (`id`, `user_id`, `theme_id`, `uri`, `title`, `status`, `created_at`, `updated_at`) VALUES
-(15, 1, 7, '5', 'Soybean field October', 'published', '2017-07-03 21:20:34', '2017-07-03 21:27:04'),
-(14, 1, 7, '4', 'Soybean field September', 'published', '2017-07-03 21:14:32', '2017-07-03 21:27:18'),
-(13, 1, 7, '3', 'Soybean field August', 'published', '2017-07-03 21:07:30', '2017-07-03 21:27:32'),
-(12, 1, 7, '2', 'Soybean field July', 'published', '2017-07-03 18:36:37', '2017-07-03 21:27:50'),
-(10, 1, 7, '7', 'Hokusou Hospital ground', 'published', '2017-07-03 17:49:23', '2017-07-03 21:28:14'),
-(11, 1, 7, '1', 'Soybean field June', 'published', '2017-07-03 17:54:59', '2017-07-03 21:28:00'),
-(16, 1, 7, '6', 'Soybean field December', 'published', '2017-07-03 21:24:17', '2017-07-03 21:26:54');
-
 -- --------------------------------------------------------
 
 --
@@ -461,18 +428,6 @@ CREATE TABLE `isvr_themes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `isvr_themes`
---
-
-INSERT INTO `isvr_themes` (`id`, `root_dir`, `status`, `user_id`, `config`, `created_at`, `updated_at`) VALUES
-(1, 'themes\\ideaspace-360', 'inactive', 1, '', '2017-07-02 16:46:17', '2017-07-03 17:21:57'),
-(2, 'themes\\vr-view-360-image', 'inactive', 1, '{"#theme-name":"VR View 360 Image with Hotspot Navigation","#theme-key":"vr-view-360-image-hotspot","#theme-version":"1.0","#ideaspace-version":">=1.0.1","#theme-description":"Photo sphere viewer with navigation hotspots. Based on the \\"VR View for the Web\\" by Google.","#theme-author-name":"IdeaSpaceVR","#theme-author-email":"info@ideaspacevr.org","#theme-homepage":"https:\\/\\/www.ideaspacevr.org\\/themes","#theme-keywords":"photo sphere, gaze input navigation, mobile, 360, photography","#theme-compatibility":"Google Cardboard, Daydream, Oculus, Samsung Gear VR, no headset","#theme-view":"scene","#content-types":{"photo-spheres":{"#label":"Photo Spheres","#description":"Manage your photo spheres.","#max-values":"infinite","#fields":{"photo-sphere":{"#label":"Photo Sphere","#description":"Upload a photo sphere image.","#help":"Photo sphere image in equirectangular projection format.","#type":"photosphere","#required":false,"#file-extension":["jpg","png"]},"navigation-hotspots":{"#label":"Photo Sphere Navigation Hotspot","#description":"Add navigation hotspots moving from one photo sphere to the next.","#help":"","#type":"position","#maxnumber":10,"#required":false,"#content-type-reference":"photo-spheres","#field-reference":"photo-sphere"}}}}}', '2017-07-02 16:46:17', '2017-07-02 16:46:17'),
-(3, 'themes\\vr-view-360-image-gallery', 'inactive', 1, '{"#theme-name":"VR View 360 Image Gallery","#theme-key":"vr-view-360-image-gallery","#theme-version":"1.0","#ideaspace-version":">=1.0.1","#theme-description":"Photo sphere gallery page. Based on the \\"VR View for the Web\\" by Google.","#theme-author-name":"IdeaSpaceVR","#theme-author-email":"info@ideaspacevr.org","#theme-homepage":"https:\\/\\/www.ideaspacevr.org\\/themes","#theme-keywords":"photo sphere, gaze input navigation, mobile, 360, photography, gallery","#theme-compatibility":"Google Cardboard, Daydream, Oculus, Samsung Gear VR, no headset","#theme-view":"scene","#content-types":{"photo-spheres":{"#label":"Photo Spheres","#description":"Manage your photo spheres.","#max-values":"infinite","#fields":{"photo-sphere-title":{"#label":"Photo Sphere Title","#description":"The photo sphere title is shown with the preview image.","#help":"The photo sphere title is shown with the preview image.","#type":"textfield","#required":true,"#maxlength":150,"#contentformat":"text"},"photo-sphere-preview":{"#label":"Photo Sphere Preview Image","#description":"Upload a preview image for your photo sphere image.","#help":"Upload a preview image for your photo sphere image. If you do not have an image at hand, it is generated from your photo sphere.","#type":"image","#required":false,"#file-extension":["jpg","png"]},"mono-stereo-select":{"#label":"360 Mono \\/ Stereo","#description":"Photo sphere is 360 mono or stereo.","#help":"Select if the photo sphere is 360 mono or stereo.","#type":"options-select","#required":true,"#options":{"mono":"360 Mono","stereo":"360 Stereo"}},"photo-sphere":{"#label":"Photo Sphere","#description":"Upload a photo sphere image.","#help":"Photo sphere image in equirectangular projection format.","#type":"photosphere","#required":true,"#file-extension":["jpg","png"]}}}}}', '2017-07-02 16:46:17', '2017-07-02 16:46:17'),
-(4, 'themes\\vr-view-360-video', 'inactive', 1, '{"#theme-name":"VR View 360 Video with Hotspot Navigation","#theme-key":"vr-view-360-video-hotspot","#theme-version":"1.0","#ideaspace-version":">=1.0.1","#theme-description":"Video sphere viewer with navigation hotspots. Based on the \\"VR View for the Web\\" by Google.","#theme-author-name":"IdeaSpaceVR","#theme-author-email":"info@ideaspacevr.org","#theme-homepage":"https:\\/\\/www.ideaspacevr.org\\/themes","#theme-keywords":"video sphere, gaze input navigation, mobile, 360, video","#theme-compatibility":"Google Cardboard, Daydream, Oculus, Samsung Gear VR, no headset","#theme-view":"scene","#content-types":{"video-spheres":{"#label":"Video Spheres","#description":"Manage your video spheres.","#max-values":"infinite","#fields":{"video-sphere":{"#label":"Video Sphere","#description":"Upload a video sphere in equirectangular projection format.","#help":"Video sphere in equirectangular projection format.","#type":"videosphere","#required":false,"#file-extension":["mp4"]},"navigation-hotspots":{"#label":"Video Sphere Navigation Hotspot","#description":"Add navigation hotspots moving from one video sphere to the next.","#help":"","#type":"position","#maxnumber":10,"#required":false,"#content-type-reference":"video-spheres","#field-reference":"video-sphere"}}}}}', '2017-07-02 16:46:17', '2017-07-02 16:46:17'),
-(5, 'themes\\vr-view-360-video-gallery', 'inactive', 1, '{"#theme-name":"VR View 360 Video Gallery","#theme-key":"vr-view-360-video-gallery","#theme-version":"1.0","#ideaspace-version":">=1.0.1","#theme-description":"Video sphere gallery page. Based on the \\"VR View for the Web\\" by Google.","#theme-author-name":"IdeaSpaceVR","#theme-author-email":"info@ideaspacevr.org","#theme-homepage":"https:\\/\\/www.ideaspacevr.org\\/themes","#theme-keywords":"video sphere, gaze input navigation, mobile, 360, gallery","#theme-compatibility":"Google Cardboard, Daydream, Oculus, Samsung Gear VR, no headset","#theme-view":"scene","#content-types":{"video-spheres":{"#label":"Video Spheres","#description":"Manage your video spheres.","#max-values":"infinite","#fields":{"video-sphere-title":{"#label":"Video Sphere Title","#description":"The video sphere title is shown with the preview image.","#help":"The video sphere title is shown with the preview image.","#type":"textfield","#required":true,"#maxlength":150,"#contentformat":"text"},"video-sphere-preview":{"#label":"Video Sphere Preview Image","#description":"Upload a preview image for your video.","#help":"Upload a preview image for your video. If you do not have an image at hand, it is generated from your photo sphere.","#type":"image","#required":true,"#file-extension":["jpg","png"]},"mono-stereo-select":{"#label":"360 Mono \\/ Stereo","#description":"Video is 360 mono or stereo.","#help":"Select if the video is 360 mono or stereo.","#type":"options-select","#required":true,"#options":{"mono":"360 Mono","stereo":"360 Stereo"}},"video-sphere":{"#label":"Video Sphere","#description":"Upload a video sphere in equirectangular projection format.","#help":"Video sphere in equirectangular projection format.","#type":"videosphere","#required":true,"#file-extension":["mp4"]}}}}}', '2017-07-02 16:46:17', '2017-07-02 16:46:17'),
-(6, 'themes\\Starter-Theme-1.0.0', 'inactive', 1, '', '2017-07-02 18:48:40', '2017-07-03 17:21:56'),
-(7, 'themes\\Models-Theme-1.0.0', 'active', 1, '{"#theme-name":"E-Lab 3DModel Theme","#theme-key":"E-Lab-3DModel-theme","#theme-version":"1.0","#ideaspace-version":">=1.0.0","#theme-description":"EnRouteLab 3D model theme","#theme-author-name":"E-Lab","#theme-author-email":"shaun.mermet@enroutelab.com","#theme-homepage":"https:\\/\\/www.ideaspacevr.org\\/themes","#theme-keywords":"3D theme, simple","#theme-compatibility":"Google Cardboard, Daydream, Oculus, Samsung Gear VR, no headset","#theme-view":"scene","#content-types":{"PLYModel":{"#label":"PLY-Models","#description":"Use some ply-models and view them in VR.","#max-values":"infinite","#fields":{"PLY-model":{"#label":"Write some text","#description":"Write some text","#help":"Write some text","#type":"model3d","#file-extension":["ply"],"#required":false}}},"OBJModel":{"#label":"OBJ-Models","#description":"Use some obj-models and view them in VR.","#max-values":"infinite","#fields":{"OBJ-model":{"#label":"Write some text","#description":"Write some text","#help":"Write some text","#type":"model3d","#file-extension":["obj"],"#required":false}}},"SkyBox":{"#label":"SkyBoxLabel","#description":"Skybox of the scene, Not Required","#max-values":"infinite","#fields":{"SkyBox-item":{"#type":"image","#label":"Skybox for the scene","#description":"Image used fo the Skybox","#required":false,"#file-extension":["jpg","png"],"#help":"Skybox helper"}}},"Floor":{"#label":"FloorLabel","#description":"Floor of the scene, Not Required","#max-values":"infinite","#fields":{"Floor-item":{"#type":"image","#label":"Floor for the scene","#description":"Image used fo the floor","#required":false,"#file-extension":["jpg","png"],"#help":"Floor helper"}}}}}', '2017-07-02 18:52:56', '2017-07-02 23:46:45');
 
 -- --------------------------------------------------------
 
