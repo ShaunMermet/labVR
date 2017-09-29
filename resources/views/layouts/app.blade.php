@@ -147,6 +147,7 @@
                         <li @if (Route::currentRouteName() == 'space_settings') class="active" @endif><a href="{{ route('space_settings') }}"><i class="fa fa-btn fa-cube"></i> {{ trans('template_app.space') }}</a></li>
                       </ul>
                     </li>
+                    <li @if (Route::currentRouteName() == 'howto') class="active" @endif><a href="{{ route('howto') }}"><i class="fa fa-btn fa-book"></i> {{ trans('howto_content.howto') }}</a></li>
                 </ul>
             </div> 
             <div id="sidebar-icons-nav" class="col-xs-1" role="navigation">
@@ -165,6 +166,7 @@
                             <li @if (Route::currentRouteName() == 'space_settings') class="active" @endif><a href="{{ route('space_settings') }}"><i class="fa fa-btn fa-cube"></i></a></li>
                         </ul>
                     </li>
+                    <li @if (Route::currentRouteName() == 'howto') class="active" @endif><a href="{{ route('howto') }}"><i class="fa fa-btn fa-book"></i></a></li>
                 </ul>
             </div> 
             <div class="col-xs-11">

@@ -738,6 +738,45 @@ class AssetLibraryModelsController extends Controller {
         return response()->json(['status' => 'success']);
     }
 
+    /**
+     * Model edit gen.
+     *
+     * @param Request $request
+     * @param int $model_id
+     *
+     * @return Response
+     */
+    public function model_edit_gen(Request $request, $model_id) {
+        ini_set('max_execution_time', 300);
+        if ($model_id == null) {
+            abort(404);
+        }
+        try {
+            $model = Model3D::where('id', $model_id)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+
+        try {
+            $genericFile = GenericFile::where('id', $model->file_id_0)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            abort(404);
+        }
+        
+        $strip = preg_replace('/\\.[^.\\s]{3,4}$/', '', $genericFile->filename);
+        $pageName = $strip;
+        
+        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+            //echo 'This is a server using Windows!';
+            exec("Potree\PotreeConverter ".$genericFile->uri." -o Processed -p ".$pageName, $output) ;
+        } else {
+            //echo 'This is a server not using Windows!';
+            exec("PotreeConverter ".$genericFile->uri." -o Processed -p ".$pageName, $output) ;
+        }
+        
+        return response()->json(['status' => 'success']);
+    }
+
 
     /**
      * Model edit delete.

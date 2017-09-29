@@ -78,6 +78,12 @@ jQuery(document).ready(function($) {
                 window.dispatchEvent(evt);
             });
 
+            $('#asset-details .gen-btn').unbind('click');
+            $('#asset-details .gen-btn').click(window.model_edit_gen_btn_click_handler);
+            $('#asset-details .aframe-btn').unbind('click');
+            $('#asset-details .aframe-btn').click(window.model_edit_aframe_btn_click_handler);
+            $('#asset-details .potree-btn').unbind('click');
+            $('#asset-details .potree-btn').click(window.model_edit_potree_btn_click_handler);
             $('#asset-details .save-btn').unbind('click');
             $('#asset-details .save-btn').click(window.model_edit_save_btn_click_handler);
             $('#asset-details #caption').unbind('keydown');
@@ -265,8 +271,65 @@ jQuery(document).ready(function($) {
         }).always(function() {
         });
     };
+    var model_edit_gen_btn_click_handler = function(e){
+        console.log("gen button clicked");
+        var data = {};
+        data.caption = $('#asset-details #caption').val();
+        data.description = $('#asset-details #description').val();
+        data.scale = $('#asset-details #scale').val();
+        data.rotation_x = $('#asset-details #rotation-x').val();
+        data.rotation_y = $('#asset-details #rotation-y').val();
+        data.rotation_z = $('#asset-details #rotation-z').val();
+        $('#asset-details .gen-btn').html('Please wait, it might take a few minutes');
+        $.ajax({
+            url: window.ideaspace_site_path + '/admin/assets/model/'+$(this).attr('data-model-id')+'/gen',
+            type: 'POST',
+            data: data
+        }).done(function(data) {
+
+                
+            if (data.status == 'success') {
+                $('#asset-details .gen-btn').html('<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:#449d44"></span> '+'generated');
+                 var potree = document.getElementById("potree");
+                 potree.contentWindow.location.reload();
+            }
+
+        }).fail(function() {
+
+        }).always(function() {
+            console.log(data);
+        });
+    }
+    var model_edit_aframe_btn_click_handler = function(e){
+        console.log("aframe button clicked");
+        $('#asset-details .potree-btn').html('Potree');
+        $('#asset-details .aframe-btn').html('<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:#449d44"></span> '+'A-frame');
+        var potree = document.getElementById("potree");
+        potree.style.display = "NONE";
+        var aframe = document.getElementById("aframe");
+        aframe.style.display = "";
+
+    }
+    var model_edit_potree_btn_click_handler = function(e){
+        console.log("potree button clicked");
+        $('#asset-details .potree-btn').html('<span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:#449d44"></span> '+'Potree');
+        $('#asset-details .aframe-btn').html('A-frame');
+        var potree = document.getElementById("potree");
+        potree.style.display = "";
+        var aframe = document.getElementById("aframe");
+        aframe.style.display = "NONE";
+    }
+
+
     window.model_edit_save_btn_click_handler = model_edit_save_btn_click_handler;
     $('#asset-details .save-btn').click(window.model_edit_save_btn_click_handler);
+    window.model_edit_gen_btn_click_handler = model_edit_gen_btn_click_handler;
+    $('#asset-details .gen-btn').click(window.model_edit_gen_btn_click_handler);
+     window.model_edit_aframe_btn_click_handler = model_edit_aframe_btn_click_handler;
+    $('#asset-details .aframe-btn').click(window.model_edit_aframe_btn_click_handler);
+     window.model_edit_potree_btn_click_handler = model_edit_potree_btn_click_handler;
+    $('#asset-details .potree-btn').click(window.model_edit_potree_btn_click_handler);
+            
 
 
     var reset_save_btn_handler = function(e) {

@@ -20,6 +20,7 @@
                     @include('admin.asset_library.model_obj_mtl', ['model_mtl' => $mtl_uri])
                 @elseif ($is_ply)
                     @include('admin.asset_library.model_ply', ['model_ply' => $uri])
+                    @include('admin.asset_library.model_ply_pc', ['model_ply' => $uri])
                 @endif
 
             </div>
@@ -103,6 +104,11 @@
                     @endfor
                 </select>
             </div>
+            <br>
+            <div>
+                <button type="button" class="btn btn-default aframe-btn"><span class="glyphicon glyphicon-ok" aria-hidden="true" style="color:#449d44"></span>A-frame</button>
+                <button type="button" class="btn btn-default potree-btn">Potree</button>
+            </div>
 
       </div><!-- col-md-4 //-->
     </div>
@@ -112,6 +118,7 @@
 <div class="modal-footer">
 
     <a class="delete-link" data-dismiss="modal" data-model-id="{{ $id }}">{{ trans('template_asset_library_models.delete_permanently') }}</a>
+    <button type="button" class="btn btn-default gen-btn" data-model-id="{{ $id }}">Generate PointCloud</button>
     <button type="button" class="btn btn-default save-btn" data-model-id="{{ $id }}"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ trans('template_asset_library_models.save') }}</button>
     <button type="button" class="btn btn-default insert-btn" data-dismiss="modal" style="display:none" data-model-id="{{ $id }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span> {{ trans('template_asset_library_models.insert') }}</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">{{ trans('template_asset_library_models.close') }}</button>

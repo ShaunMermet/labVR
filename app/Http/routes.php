@@ -139,7 +139,8 @@ Route::group(['middleware' => 'web'], function () {
   Route::post('admin/assets/model/{model_id}/delete', ['as' => 'asset_library_model_delete', 'uses' => 'Admin\AssetLibraryModelsController@model_edit_delete']);
   Route::get('admin/assets/model/{model_id}/vr-view', ['as' => 'asset_library_model_vr_view', 'uses' => 'Admin\AssetLibraryModelsController@model_vr_view']);
   Route::post('admin/assets/model/save-image', ['as' => 'asset_library_model_save_image', 'uses' => 'Admin\AssetLibraryModelsController@save_image']);
-
+  Route::post('admin/assets/model/{model_id}/gen', ['as' => 'asset_library_model_save', 'uses' => 'Admin\AssetLibraryModelsController@model_edit_gen']);
+  
 
   /**
    * Spaces
@@ -156,7 +157,11 @@ Route::group(['middleware' => 'web'], function () {
   Route::post('admin/settings/general', ['as' => 'general_settings', 'uses' => 'Admin\Settings\GeneralSettingsController@save']);
   Route::get('admin/settings/space', ['as' => 'space_settings', 'uses' => 'Admin\Settings\SpaceSettingsController@index']);
   Route::post('admin/settings/space', ['as' => 'space_settings', 'uses' => 'Admin\Settings\SpaceSettingsController@save']);
-
+  
+  /**
+   * Howto
+   */
+  Route::get('admin/howto', ['as' => 'howto', 'uses' => 'Admin\HowtoController@index']);
 
   /**
    * Installation
