@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'IdeaSpaceVR')
+@section('title', 'COSMOS Surveying')
 
 @section('content')
     <div class="row" style="padding-left:35px;margin-bottom:20px">

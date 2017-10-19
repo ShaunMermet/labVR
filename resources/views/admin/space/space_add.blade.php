@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'IdeaSpaceVR')
+@section('title', 'COSMOS Surveying')
 
 @section('content')
 
@@ -32,14 +32,14 @@
 
         <!-- mainbar //-->
         <div class="col-md-9" style="padding-left:35px">
-            <div class="form-group {{ $errors->has('space_title')?'has-error':'' }}">
-            {!! Form::text('space_title', '', array('class'=>'form-control input-lg', 'placeholder'=> trans('template_space_add_edit.space_title_placeholder'), 'maxlength' => '512')) !!}
+            <div class="form-group {{ $errors->has('space_title')?'has-error':'' }}" id="space_add_title_form">
+            {!! Form::text('space_title', '', array('class'=>'form-control input-lg', 'id'=>'space_add_title_form', 'placeholder'=> trans('template_space_add_edit.space_title_placeholder'), 'maxlength' => '512')) !!}
             {!! $errors->has('space_title')?$errors->first('space_title', '<span class="help-block">:message</span>'):'' !!}
             </div>
             <div class="form-group {{ $errors->has('space_uri')?'has-error':'' }}">
                 <div class="input-group">
                     <div class="input-group-addon">{{ url('/') . '/' }}</div>
-                    {!! Form::text('space_uri', '', array('class'=>'form-control', 'placeholder'=> trans('template_space_add_edit.space_uri_placeholder'), 'maxlength' => '255')) !!}
+                    {!! Form::text('space_uri', '', array('class'=>'form-control', 'id'=>'space_add_uri_form', 'placeholder'=> trans('template_space_add_edit.space_uri_placeholder'), 'maxlength' => '255')) !!}
                 </div>
                 {!! $errors->has('space_uri')?$errors->first('space_uri', '<span class="help-block">:message</span>'):'' !!}
             </div>

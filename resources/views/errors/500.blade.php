@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IdeaSpaceVR</title>
+    <title>COSMOS Surveying</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{ url('favicon.ico') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ url('cosmos.png') }}"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Fullscreen Landscape on iOS -->

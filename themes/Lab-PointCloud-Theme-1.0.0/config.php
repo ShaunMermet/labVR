@@ -2,7 +2,7 @@
 
 return [
 
-  '#theme-name' => 'E-Lab PCModel Theme',
+  '#theme-name' => 'Point Cloud Space',
   '#theme-key' => 'E-Lab-PCModel-theme',
   '#theme-version' => '1.0',
   '#ideaspace-version' => '>=1.0.0',
@@ -17,15 +17,15 @@ return [
   '#content-types' => [
 
     'PLYModel' => [
-      '#label' => 'PLY-Models',
+      '#label' => 'Point Cloud Model',
       '#description' => 'Use some pointcloud ply-models and view them in browser.',
       '#max-values' => 'infinite',
       '#fields' => [
 
         'PLY-model' => [
-          '#label' => 'Write some text',
+          '#label' => 'Select Point Cloud',
           '#description' => 'Write some text',
-          '#help' => 'Write some text',
+          '#help' => 'Add a file',
           '#type' => 'model3d',
           '#file-extension' => ['ply'],
           '#required' => false,

@@ -388,14 +388,23 @@ trait AssetLibraryControllerTrait {
 
         $models = Model3D::orderBy('updated_at', 'desc')->get();
         $models_result = [];
+        error_log(print_r('php assetlibcon',true));
+        error_log(print_r($models,true));
         foreach ($models as $model) {
             try {
                 /* get model preview image, if available */
                 $genericFile = GenericFile::where('id', $model->file_id_preview)->firstOrFail();
+                $nameFile = GenericFile::where('id', $model->file_id_0)->firstOrFail();
                 $model_result = [];
                 $model_result['id'] = $model->id;
                 $model_result['uri'] = asset($genericFile->uri);
-
+                $model_result['orig'] = $nameFile->filename_orig;
+                $model_result['name'] = $nameFile->filename;
+                $elt = explode(".", $model_result['name']);
+                $model_result['folder'] = $elt[0];
+                $model_result['type'] = $elt[1];
+                $model_result['orig_uri'] = asset('processed/'.$model_result['folder'].'.html');
+                
                 $models_result[] = $model_result;
 
             } catch (ModelNotFoundException $e) {

@@ -78,7 +78,7 @@ CREATE TABLE `isvr_fields` (
 -- Dumping data for table `isvr_fields`
 --
 
-INSERT INTO `isvr_fields` (`id`, `content_id`, `key`, `type`, `data`, `meta_data`, `created_at`, `updated_at`) VALUES
+/*INSERT INTO `isvr_fields` (`id`, `content_id`, `key`, `type`, `data`, `meta_data`, `created_at`, `updated_at`) VALUES
 (31, 30, 'SkyBox-item', 'image', '5', 'null', '2017-07-03 21:14:46', '2017-07-03 21:14:46'),
 (29, 28, 'PLY-model', 'model3d', '27', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:07:43', '2017-07-03 21:08:36'),
 (30, 29, 'SkyBox-item', 'image', '5', 'null', '2017-07-03 21:07:56', '2017-07-03 21:07:56'),
@@ -96,7 +96,7 @@ INSERT INTO `isvr_fields` (`id`, `content_id`, `key`, `type`, `data`, `meta_data
 (35, 33, 'PLY-model', 'model3d', '30', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:22:16', '2017-07-03 21:22:16'),
 (36, 34, 'SkyBox-item', 'image', '5', 'null', '2017-07-03 21:24:26', '2017-07-03 21:24:26'),
 (37, 35, 'PLY-model', 'model3d', '31', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:24:45', '2017-07-03 21:24:45');
-
+/*
 -- --------------------------------------------------------
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `isvr_files` (
 -- Dumping data for table `isvr_files`
 --
 
-INSERT INTO `isvr_files` (`id`, `user_id`, `filename`, `uri`, `filemime`, `filesize`, `filename_orig`, `created_at`, `updated_at`) VALUES
+/*INSERT INTO `isvr_files` (`id`, `user_id`, `filename`, `uri`, `filemime`, `filesize`, `filename_orig`, `created_at`, `updated_at`) VALUES
 (39, 1, '5q1geiSxBifxumKzXmxfz3AqAJW0EwIMtB8X4k1m_preview.png', 'public/assets/user/model3d/OVNOLH9JzUvV4I0U4AJ86izM5H71KT/5q1geiSxBifxumKzXmxfz3AqAJW0EwIMtB8X4k1m_preview.png', 'image/png', 4971, '5q1geiSxBifxumKzXmxfz3AqAJW0EwIMtB8X4k1m_preview.png', '2017-07-03 17:53:03', '2017-07-03 17:53:03'),
 (151, 1, 'O6D2q8v0ooGthM8FMyHt9js9gM7ccPT3TifiJWM4_preview.png', 'public/assets/user/model3d/Tph2QLr6XLTQ3DO0kIUvBvt5vE7BNQ/O6D2q8v0ooGthM8FMyHt9js9gM7ccPT3TifiJWM4_preview.png', 'image/png', 4729, 'O6D2q8v0ooGthM8FMyHt9js9gM7ccPT3TifiJWM4_preview.png', '2017-07-03 21:23:23', '2017-07-03 21:23:23'),
 (150, 1, 'sjGIkPMw1nleU6xFPljLRx7zc4f2PykUEiyfTrUsCwdDSywzIUGQ2mNV3W5b.ply', 'public/assets/user/model3d/Tph2QLr6XLTQ3DO0kIUvBvt5vE7BNQ/sjGIkPMw1nleU6xFPljLRx7zc4f2PykUEiyfTrUsCwdDSywzIUGQ2mNV3W5b.ply', 'application/octet-stream', 11109945, 'soybean_tanashi_x5rgb15m_20161227_group1_densified_point_cloudgood3invertednorm.ply', '2017-07-03 21:23:16', '2017-07-03 21:23:16'),
@@ -145,7 +145,7 @@ INSERT INTO `isvr_files` (`id`, `user_id`, `filename`, `uri`, `filemime`, `files
 (129, 1, 'odm_textured_model_material0000_map_kd.png', 'public/assets/user/model3d/R8CsznRy4q5DGQ6IR0uslbFY1wzAGk/odm_textured_model_material0000_map_kd.png', 'image/png', 11771980, 'odm_textured_model_material0000_map_kd.png', '2017-07-03 19:23:44', '2017-07-03 19:23:44'),
 (128, 1, '8DcmIloLcNSMYqgggD9LT0Mc9xFxg71pNDzZULaDUvbHOM9c1eBYo9UXX0k5.obj', 'public/assets/user/model3d/R8CsznRy4q5DGQ6IR0uslbFY1wzAGk/8DcmIloLcNSMYqgggD9LT0Mc9xFxg71pNDzZULaDUvbHOM9c1eBYo9UXX0k5.obj', 'application/octet-stream', 21150300, 'odm_textured_mode_centered2.obj', '2017-07-03 19:23:43', '2017-07-03 19:23:43'),
 (127, 1, 'IGx5m9cBoD7AL5RmNU1jEkpP4jAahva7cjnFkT5CwQR7eTurFKzvlCQtoNNg.mtl', 'public/assets/user/model3d/R8CsznRy4q5DGQ6IR0uslbFY1wzAGk/IGx5m9cBoD7AL5RmNU1jEkpP4jAahva7cjnFkT5CwQR7eTurFKzvlCQtoNNg.mtl', 'application/octet-stream', 1865, 'odm_textured_mode_centered2.mtl', '2017-07-03 19:23:43', '2017-07-03 19:23:43');
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -227,7 +227,7 @@ CREATE TABLE `isvr_models` (
 -- Dumping data for table `isvr_models`
 --
 
-INSERT INTO `isvr_models` (`id`, `user_id`, `file_id_0`, `file_id_1`, `file_id_preview`, `caption`, `description`, `data`, `created_at`, `updated_at`) VALUES
+/*INSERT INTO `isvr_models` (`id`, `user_id`, `file_id_0`, `file_id_1`, `file_id_preview`, `caption`, `description`, `data`, `created_at`, `updated_at`) VALUES
 (30, 1, 148, NULL, 149, '', 'From\nsoybean_tanashi_x5rgb15m_20161110_group1_densified_point_cloudNew2', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:18:53', '2017-07-03 21:21:42'),
 (10, 1, 38, NULL, 39, '', 'From\nsoybean_tanashi_x5rgb15m_20160608_group1_densified_point_cloudCollapsed', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 17:52:57', '2017-07-03 17:56:28'),
 (14, 1, 46, NULL, 47, '', '', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 18:35:28', '2017-07-03 18:36:02'),
@@ -235,7 +235,7 @@ INSERT INTO `isvr_models` (`id`, `user_id`, `file_id_0`, `file_id_1`, `file_id_p
 (25, 1, 127, 128, 138, '', '', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 19:23:43', '2017-07-03 19:24:21'),
 (29, 1, 146, NULL, 147, '', 'From\nsoybean_tanashi_x5rgb15m_20160916_group1_densified_point_cloudCollapsedCentered', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:13:27', '2017-07-03 21:13:52'),
 (31, 1, 150, NULL, 151, '', '', '{"scale":"1.0 1.0 1.0","rotation":"270 0 0"}', '2017-07-03 21:23:16', '2017-07-03 21:23:35');
-
+*/
 -- --------------------------------------------------------
 
 --
@@ -252,9 +252,8 @@ CREATE TABLE `isvr_password_resets` (
 -- Dumping data for table `isvr_password_resets`
 --
 
-INSERT INTO `isvr_password_resets` (`email`, `token`, `created_at`) VALUES
-('shaun.mermet@enroutelab.com', '09725897296e2155a63ae4e1299f1bba6ec250b8147853e67eeedbacdb896209', '2017-07-02 18:16:00');
-
+/*INSERT INTO `isvr_password_resets` (`email`, `token`, `created_at`) VALUES
+*/
 -- --------------------------------------------------------
 
 --
@@ -334,7 +333,7 @@ CREATE TABLE `isvr_textures` (
 -- Dumping data for table `isvr_textures`
 --
 
-INSERT INTO `isvr_textures` (`id`, `user_id`, `model_id`, `file_id`, `data`, `created_at`, `updated_at`) VALUES
+/*INSERT INTO `isvr_textures` (`id`, `user_id`, `model_id`, `file_id`, `data`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 2, '', '2017-07-02 16:49:20', '2017-07-02 16:49:20'),
 (2, 1, 1, 3, '', '2017-07-02 16:49:20', '2017-07-02 16:49:20'),
 (3, 1, 2, 5, '', '2017-07-02 16:53:09', '2017-07-02 16:53:09'),
@@ -411,7 +410,7 @@ INSERT INTO `isvr_textures` (`id`, `user_id`, `model_id`, `file_id`, `data`, `cr
 (83, 1, 25, 135, '', '2017-07-03 19:23:46', '2017-07-03 19:23:46'),
 (84, 1, 25, 136, '', '2017-07-03 19:23:46', '2017-07-03 19:23:46'),
 (85, 1, 25, 137, '', '2017-07-03 19:23:46', '2017-07-03 19:23:46');
-
+*/
 -- --------------------------------------------------------
 
 --

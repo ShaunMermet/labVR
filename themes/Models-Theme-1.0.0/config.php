@@ -2,7 +2,7 @@
 
 return [
 
-  '#theme-name' => 'E-Lab 3DModel Theme',
+  '#theme-name' => 'Polygon Space',
   '#theme-key' => 'E-Lab-3DModel-theme',
   '#theme-version' => '1.0',
   '#ideaspace-version' => '>=1.0.0',
@@ -17,15 +17,15 @@ return [
   '#content-types' => [
 
     'PLYModel' => [
-      '#label' => 'PLY-Models',
+      '#label' => 'Polygon-ply Model',
       '#description' => 'Use some ply-models and view them in VR.',
       '#max-values' => 'infinite',
       '#fields' => [
 
         'PLY-model' => [
-          '#label' => 'Write some text',
-          '#description' => 'Write some text',
-          '#help' => 'Write some text',
+          '#label' => 'Select polygon',
+          '#description' => 'Selection',
+          '#help' => 'Add a file',
           '#type' => 'model3d',
           '#file-extension' => ['ply'],
           '#required' => false,
@@ -35,15 +35,15 @@ return [
 
     ], /* Model */
     'OBJModel' => [
-      '#label' => 'OBJ-Models',
+      '#label' => 'Polygon-obj Model',
       '#description' => 'Use some obj-models and view them in VR.',
       '#max-values' => 'infinite',
       '#fields' => [
 
         'OBJ-model' => [
-          '#label' => 'Write some text',
+          '#label' => 'Select polygon',
           '#description' => 'Write some text',
-          '#help' => 'Write some text',
+          '#help' => 'Add a file',
           '#type' => 'model3d',
           '#file-extension' => ['obj'],
           '#required' => false,

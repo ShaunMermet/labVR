@@ -307,7 +307,8 @@ jQuery(document).ready(function($) {
         var potree = document.getElementById("potree");
         potree.style.display = "NONE";
         var aframe = document.getElementById("aframe");
-        aframe.style.display = "";
+        aframe.style.visibility = "visible";
+        aframe.style.marginTop = "0px";
 
     }
     var model_edit_potree_btn_click_handler = function(e){
@@ -317,7 +318,8 @@ jQuery(document).ready(function($) {
         var potree = document.getElementById("potree");
         potree.style.display = "";
         var aframe = document.getElementById("aframe");
-        aframe.style.display = "NONE";
+        aframe.style.visibility = "hidden";
+        aframe.style.marginTop = "-605px";
     }
 
 
@@ -375,6 +377,11 @@ jQuery(document).ready(function($) {
         }
     });
 
+    var create_image = function(iframe) {
+        console.log('create_image');
+        console.log(iframe);
+        return;
+    }
 
     $('#models .upload').dmUploader({
         url: window.ideaspace_site_path + '/admin/assets/models/add',
@@ -419,93 +426,201 @@ jQuery(document).ready(function($) {
         onUploadSuccess: function(id, data) {
 
             if (data.status == 'success') {
+                console.log('upload success')
+                console.log(data);
+                //Pointcloud Gen
 
-                $('#models #file-0:first').attr('data-model-id', data.model_id);
+                $.ajax({
+                    url: window.ideaspace_site_path + '/admin/assets/model/'+data.model_id+'/gen',
+                    type: 'POST',
+                    data: data
+                }).done(function(data) {
 
-                $('#models #file-0:first').load(window.ideaspace_site_path + '/admin/assets/model/'+data.model_id+'/get-model-preview-code', function() {
+                    //PointcloudPreview
+                    console.log('gen success');
+                    //$('#models #file-0:first').html('<iframe id="potree" src="'+data.uri_id+'" style="border: 0; width: 100%; */"></iframe>');
 
-                    var scene = document.querySelector('#preview-scene');
-                    if (scene.renderStarted) {
-                        create_image();
-                    } else {
-                        scene.addEventListener('renderstart', create_image);
-                    }
+                    $('#models #file-0:first').attr('data-model-id', data.model_id);
+                    $('#models #file-0:first').attr('data-uri-id', data.uri_id);
 
-                    function create_image() {
+                    $('#models #file-0:first').load(window.ideaspace_site_path + '/admin/assets/model/'+data.model_id+'/get-model-preview-code', function() {
 
-                        scene.addEventListener('model-loaded', function(e) {
+                        var scene = document.querySelector('#preview-scene');
+                        if (scene.renderStarted) {
+                            create_image();
+                        } else {
+                            scene.addEventListener('renderstart', create_image);
+                        }
 
-                            /* convert camera fov degrees to radians */
-                            var fov = scene.camera.fov * (Math.PI / 180);
-                            var model = document.querySelector('#preview-model');
-                            var box = new THREE.Box3().setFromObject(model.getObject3D('mesh'));
+                        function create_image() {
 
-                            var objectSize = Math.max(box.size().x, box.size().y);
+                            scene.addEventListener('model-loaded', function(e) {
 
-                            var distance = Math.abs(objectSize / Math.sin(fov / 2));
+                                /* convert camera fov degrees to radians */
+                                var fov = scene.camera.fov * (Math.PI / 180);
+                                var model = document.querySelector('#preview-model');
+                                var box = new THREE.Box3().setFromObject(model.getObject3D('mesh'));
 
-                            var camera = document.querySelector('#preview-camera');
-                            camera.setAttribute('position', {x: 0, y: box.size().y / 2, z: distance});
+                                var objectSize = Math.max(box.size().x, box.size().y);
 
-                            /* workaround since model-loaded is emitted before model is shown in scene */
-                            setTimeout(function() {
+                                var distance = Math.abs(objectSize / Math.sin(fov / 2));
 
-                                var canvasData = scene.renderer.domElement.toDataURL('image/png');
+                                var camera = document.querySelector('#preview-camera');
+                                camera.setAttribute('position', {x: 0, y: box.size().y / 2, z: distance});
 
-                                $.ajax({
-                                    url: window.ideaspace_site_path + '/admin/assets/model/save-image',
-                                    type: 'POST',
-                                    data: { 'canvasData': canvasData, 'model_id': data.model_id }
-                                }).done(function(data) {
+                                /* workaround since model-loaded is emitted before model is shown in scene */
+                                setTimeout(function() {
 
-                                    if (data.status = 'success') {
+                                    var canvasData = scene.renderer.domElement.toDataURL('image/png');
 
-                                        $('#models #file-0:first').html('<div><img class="edit img-thumbnail img-responsive" src="' + data.uri + '" data-model-id="'+data.model_id+'"></div>');
-                                        $('#models #file-0:first').append('<div class="menu" style="text-align:center;margin-top:5px;display:none">' +
-                                            '<a href="#" class="vr-view" data-model-id="'+data.model_id+'">'+localization_strings['vr_view']+'</a> | ' +
-                                            '<a href="#" class="edit" data-model-id="'+data.model_id+'">'+localization_strings['edit']+'</a> ' +
-                                            '<span class="insert-link" style="display:none">| <a href="#" class="insert" data-model-id="'+data.model_id+'">'+localization_strings['insert']+'</a></span></div>');
+                                    $.ajax({
+                                        url: window.ideaspace_site_path + '/admin/assets/model/save-image',
+                                        type: 'POST',
+                                        data: { 'canvasData': canvasData, 'model_id': data.model_id }
+                                    }).done(function(data) {
 
-                                        $('#models .files .list-item').unbind('click');
-                                        $('#models .files .list-item').click(window.list_item_menu_click_handler);
-                                        $('#models .files .list-item').unbind('hover');
-                                        $('#models .files .list-item').hover(window.list_item_menu_hover_in_handler, window.list_item_menu_hover_out_handler);
-                                        $('#models .files .list-item .vr-view').unbind('click');
-                                        $('#models .files .list-item .vr-view').click(window.list_item_vr_view_click_handler);
-                                        $('#models .files .list-item .edit').unbind('click');
-                                        $('#models .files .list-item .edit').click(window.list_item_edit_click_handler);
+                                        if (data.status = 'success') {
+                                            var uri = $('#models #file-0:first').attr("data-uri-id");
+                                            $('#models #file-0:first').html('<iframe id="potree" src="'+uri+'"  style="border: 0; width: 100%;"></iframe>');
+                                            $('#models #file-0:first').append('<div class="menu" style="text-align:center;margin-top:5px;display:none">' +
+                                                '<a href="#" class="vr-view" data-model-id="'+data.model_id+'">'+localization_strings['vr_view']+'</a> | ' +
+                                                '<a href="#" class="edit" data-model-id="'+data.model_id+'">'+localization_strings['edit']+'</a> ' +
+                                                '<span class="insert-link" style="display:none">| <a href="#" class="insert" data-model-id="'+data.model_id+'">'+localization_strings['insert']+'</a></span></div>');
 
-                                        /* hide upload area */
-                                        $('.upload-area').removeClass('visible');
-                                        $('.upload-area').hide();
+                                            $('#models .files .list-item').unbind('click');
+                                            $('#models .files .list-item').click(window.list_item_menu_click_handler);
+                                            $('#models .files .list-item').unbind('hover');
+                                            $('#models .files .list-item').hover(window.list_item_menu_hover_in_handler, window.list_item_menu_hover_out_handler);
+                                            $('#models .files .list-item .vr-view').unbind('click');
+                                            $('#models .files .list-item .vr-view').click(window.list_item_vr_view_click_handler);
+                                            $('#models .files .list-item .edit').unbind('click');
+                                            $('#models .files .list-item .edit').click(window.list_item_edit_click_handler);
 
-                                        /* show insert link when opened from space edit content page */
-                                        if ($('.asset-library-nav').find('#models-tab').hasClass('auto-opentab')) {
-                                            $('#models .files .insert-link').show();
-                                            $('#asset-details .insert-btn').show();
-                                            $('#models .files .list-item .insert').unbind('click');
-                                            $('#models .files .list-item .insert').click(window.insert_click_handler);
-                                            $('#asset-details .insert-btn').unbind('click');
-                                            $('#asset-details .insert-btn').click(window.insert_btn_click_handler);
+                                            /* hide upload area */
+                                            $('.upload-area').removeClass('visible');
+                                            $('.upload-area').hide();
+
+                                            /* show insert link when opened from space edit content page */
+                                            if ($('.asset-library-nav').find('#models-tab').hasClass('auto-opentab')) {
+                                                $('#models .files .insert-link').show();
+                                                $('#asset-details .insert-btn').show();
+                                                $('#models .files .list-item .insert').unbind('click');
+                                                $('#models .files .list-item .insert').click(window.insert_click_handler);
+                                                $('#asset-details .insert-btn').unbind('click');
+                                                $('#asset-details .insert-btn').click(window.insert_btn_click_handler);
+                                            }
+
+                                        } else {
+                                            $('#models').find('#file-error').remove();
+                                            $('#models').prepend('<div id="file-error" class="alert alert-danger" role="alert">' + localization_strings['model_save_as_image_error'] + '</div>');
+                                            $("#models #file-error").fadeTo(7000, 500).slideUp(500, function() { $("#models #file-type-error").remove(); });
                                         }
 
-                                    } else {
-                                        $('#models').find('#file-error').remove();
-                                        $('#models').prepend('<div id="file-error" class="alert alert-danger" role="alert">' + localization_strings['model_save_as_image_error'] + '</div>');
-                                        $("#models #file-error").fadeTo(7000, 500).slideUp(500, function() { $("#models #file-type-error").remove(); });
-                                    }
+                                    }).fail(function() {
+                                    }).always(function() {
+                                    });
 
-                                }).fail(function() {
-                                }).always(function() {
-                                });
+                                }, 4000); /* end setTimeout */
 
-                            }, 4000); /* end setTimeout */
+                            }); /* end model-loaded event listener */
 
-                        }); /* end model-loaded event listener */
+                        } /* end create_image */
 
-                  } /* end create_image */
+                    }); /* end load */
+                    
+                }).fail(function() {
+                    //mesh preview
+                    console.log('fails in');
+                    $('#models #file-0:first').attr('data-model-id', data.model_id);
 
-              }); /* end load */
+                    $('#models #file-0:first').load(window.ideaspace_site_path + '/admin/assets/model/'+data.model_id+'/get-model-preview-code', function() {
+
+                        var scene = document.querySelector('#preview-scene');
+                        if (scene.renderStarted) {
+                            create_image();
+                        } else {
+                            scene.addEventListener('renderstart', create_image);
+                        }
+
+                        function create_image() {
+
+                            scene.addEventListener('model-loaded', function(e) {
+
+                                /* convert camera fov degrees to radians */
+                                var fov = scene.camera.fov * (Math.PI / 180);
+                                var model = document.querySelector('#preview-model');
+                                var box = new THREE.Box3().setFromObject(model.getObject3D('mesh'));
+
+                                var objectSize = Math.max(box.size().x, box.size().y);
+
+                                var distance = Math.abs(objectSize / Math.sin(fov / 2));
+
+                                var camera = document.querySelector('#preview-camera');
+                                camera.setAttribute('position', {x: 0, y: box.size().y / 2, z: distance});
+
+                                /* workaround since model-loaded is emitted before model is shown in scene */
+                                setTimeout(function() {
+
+                                    var canvasData = scene.renderer.domElement.toDataURL('image/png');
+
+                                    $.ajax({
+                                        url: window.ideaspace_site_path + '/admin/assets/model/save-image',
+                                        type: 'POST',
+                                        data: { 'canvasData': canvasData, 'model_id': data.model_id }
+                                    }).done(function(data) {
+
+                                        if (data.status = 'success') {
+
+                                            $('#models #file-0:first').html('<div><img class="edit img-thumbnail img-responsive" src="' + data.uri + '" data-model-id="'+data.model_id+'"></div>');
+                                            $('#models #file-0:first').append('<div class="menu" style="text-align:center;margin-top:5px;display:none">' +
+                                                '<a href="#" class="vr-view" data-model-id="'+data.model_id+'">'+localization_strings['vr_view']+'</a> | ' +
+                                                '<a href="#" class="edit" data-model-id="'+data.model_id+'">'+localization_strings['edit']+'</a> ' +
+                                                '<span class="insert-link" style="display:none">| <a href="#" class="insert" data-model-id="'+data.model_id+'">'+localization_strings['insert']+'</a></span></div>');
+
+                                            $('#models .files .list-item').unbind('click');
+                                            $('#models .files .list-item').click(window.list_item_menu_click_handler);
+                                            $('#models .files .list-item').unbind('hover');
+                                            $('#models .files .list-item').hover(window.list_item_menu_hover_in_handler, window.list_item_menu_hover_out_handler);
+                                            $('#models .files .list-item .vr-view').unbind('click');
+                                            $('#models .files .list-item .vr-view').click(window.list_item_vr_view_click_handler);
+                                            $('#models .files .list-item .edit').unbind('click');
+                                            $('#models .files .list-item .edit').click(window.list_item_edit_click_handler);
+
+                                            /* hide upload area */
+                                            $('.upload-area').removeClass('visible');
+                                            $('.upload-area').hide();
+
+                                            /* show insert link when opened from space edit content page */
+                                            if ($('.asset-library-nav').find('#models-tab').hasClass('auto-opentab')) {
+                                                $('#models .files .insert-link').show();
+                                                $('#asset-details .insert-btn').show();
+                                                $('#models .files .list-item .insert').unbind('click');
+                                                $('#models .files .list-item .insert').click(window.insert_click_handler);
+                                                $('#asset-details .insert-btn').unbind('click');
+                                                $('#asset-details .insert-btn').click(window.insert_btn_click_handler);
+                                            }
+
+                                        } else {
+                                            $('#models').find('#file-error').remove();
+                                            $('#models').prepend('<div id="file-error" class="alert alert-danger" role="alert">' + localization_strings['model_save_as_image_error'] + '</div>');
+                                            $("#models #file-error").fadeTo(7000, 500).slideUp(500, function() { $("#models #file-type-error").remove(); });
+                                        }
+
+                                    }).fail(function() {
+                                    }).always(function() {
+                                    });
+
+                                }, 4000); /* end setTimeout */
+
+                            }); /* end model-loaded event listener */
+
+                        } /* end create_image */
+
+                    }); /* end load */
+                    
+                }).always(function() {
+                    console.log('always done');
+                });
 
           } else if (data.status == 'success-ongoing') {
               /* uploading files which belong together */

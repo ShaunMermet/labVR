@@ -43,6 +43,14 @@ jQuery(document).ready(function($) {
         return false;
       });
     });
+    /* AutoComplete */
+    var $title = $("#space_add_title_form .input-lg")[0];
+    var $uri = $("#space_add_uri_form");
+
+    $("#space_add_title_form").keyup(function() {
+        console.log('keystroke');
+        $uri.val( $title.value );
+    });
 
     /* touch */
     $('.field-title .title').click(function(e) {

@@ -1,4 +1,5 @@
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <div class="row upload-area" style="display:none">
 
         <div class="col-md-12">
@@ -50,10 +51,19 @@
             <li class="list-item">
 
                 <div id="file-{{ $i }}" class="wrapper" data-model-id="{{ $model['id'] }}">
-       
+                    
+                    <?php
+                    //error_log(print_r('php model',true));
+                    //error_log(print_r($model,true));
+                    ?>
+                    @if ($model['type'] == 'ply')
+                        <iframe id="potree" src="{{ $model['orig_uri'] }}"  style="border: 0; width: 100%; */"></iframe>
+                    @else
+
                     <div>
                         <img class="img-thumbnail img-responsive edit" src="{{ $model['uri'] }}" data-model-id="{{ $model['id'] }}">
                     </div> 
+                    @endif
 
                     <div class="menu" style="text-align:center;margin-top:5px;display:none">
                         <a href="#" class="vr-view" data-model-id="{{ $model['id'] }}">{{ trans('template_asset_library_models.vr_view') }}</a> | <a href="#" class="edit" data-model-id="{{ $model['id'] }}">{{ trans('template_asset_library_models.edit') }}</a> <span class="insert-link" style="display:none">| <a href="#" class="insert" data-model-id="{{ $model['id'] }}">{{ trans('template_asset_library_models.insert') }}</a></span>

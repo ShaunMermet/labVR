@@ -1,5 +1,5 @@
 <!-- potree //-->
-<iframe id="potree" src=""  style="border: 0; width: 100%;height: 75vh;max-height: 600px;display: none; */"></iframe>
+<iframe id="potree" src=""  style="border: 0; width: 100%;height: 75vh;max-height: 600px; */"></iframe>
        
   <div id="value" src="{{ $model_ply }}"></div>
   <div id="host" src="{{ url('') }}"></div>

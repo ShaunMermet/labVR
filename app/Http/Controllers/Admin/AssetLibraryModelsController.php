@@ -762,19 +762,22 @@ class AssetLibraryModelsController extends Controller {
         } catch (ModelNotFoundException $e) {
             abort(404);
         }
-        
+        $elt = explode(".", $genericFile->filename);
+        $ext = $elt[1];
+        if($ext != 'ply')
+            return;
         $strip = preg_replace('/\\.[^.\\s]{3,4}$/', '', $genericFile->filename);
         $pageName = $strip;
         
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             //echo 'This is a server using Windows!';
-            exec("Potree\PotreeConverter ".$genericFile->uri." -o Processed -p ".$pageName, $output) ;
+            exec("Potree\PotreeConverter ".$genericFile->uri." -o processed -p ".$pageName." --overwrite", $output) ;
         } else {
             //echo 'This is a server not using Windows!';
-            exec("PotreeConverter ".$genericFile->uri." -o Processed -p ".$pageName, $output) ;
+            exec("PotreeConverter ".$genericFile->uri." -o processed -p ".$pageName." --overwrite", $output) ;
         }
         
-        return response()->json(['status' => 'success']);
+        return response()->json(['status' => 'success','uri_id'=> asset('processed/'.$pageName.'.html'),'model_id'=>$model_id]);
     }
 
 

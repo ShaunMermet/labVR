@@ -3,7 +3,7 @@
 <head>
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{ url('favicon.ico') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ url('cosmos.png') }}"/>
 
     
 </head>

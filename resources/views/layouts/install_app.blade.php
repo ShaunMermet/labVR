@@ -7,7 +7,7 @@
 
     <title>@yield('title')</title>
 
-    <link rel="shortcut icon" type="image/png" href="{{ url('favicon.ico') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ url('cosmos.png') }}"/>
 
     <meta name="abstract" content="" />
     <meta name="description" content="" />
@@ -47,7 +47,7 @@
             <div class="navbar-header">
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="#"><img alt="IdeaSpace" style="width:20px;display:inline" src="{{ asset('public/assets/layouts/app/images/isvr-logo-v2.png') }}"></a>
+                <a class="navbar-brand" href="#"><img alt="IdeaSpace" style="width:20px;display:inline" src="{{ asset('public/assets/layouts/app/images/cosmos.png') }}"></a>
             </div>
 
         </div>
