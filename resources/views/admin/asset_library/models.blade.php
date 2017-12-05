@@ -56,7 +56,7 @@
                     //error_log(print_r('php model',true));
                     //error_log(print_r($model,true));
                     ?>
-                    @if ($model['type'] == 'ply')
+                    @if (array_key_exists('type', $model) && $model['type'] == 'ply')
                         <iframe id="potree" src="{{ $model['orig_uri'] }}"  style="border: 0; width: 100%; */"></iframe>
                     @else
 
