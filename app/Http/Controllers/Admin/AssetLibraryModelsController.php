@@ -771,7 +771,7 @@ class AssetLibraryModelsController extends Controller {
         
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             //echo 'This is a server using Windows!';
-            exec("Potree\PotreeConverter ".$genericFile->uri." -o processed -p ".$pageName." --overwrite", $output) ;
+            exec("Potree\PotreeConverter ".$genericFile->uri." -o processed -p ".$pageName." -f i --material INTENSITY --overwrite", $output) ;
         } else {
             //echo 'This is a server not using Windows!';
             exec("PotreeConverter ".$genericFile->uri." -o processed -p ".$pageName." --overwrite", $output) ;
